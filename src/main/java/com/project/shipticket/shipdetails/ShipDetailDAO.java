@@ -2,14 +2,14 @@ package com.project.shipticket.shipdetails;
 
 public interface ShipDetailDAO {
 
-	public void addShip(ShipDetail s);
+	public void addShip(ShipDetail s) throws Exception;
 
-	public void updateShip(ShipDetail s);
+	public void updateShip(ShipDetail s) throws Exception;
 
-	public void deleteShip(ShipDetail s);
+	public void deleteShip(ShipDetail s) throws Exception;
 
-	public void getShip(ShipDetail s);
+	public void getShip(ShipDetail s) throws Exception;
 
-	public void distinctShip(ShipDetail s);// used for differentiate in classes in sql
+	public void distinctShip(String s) throws Exception;// used for differentiate in classes in sql
 
 }

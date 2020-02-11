@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import com.project.shipticket.util.Logger;
 import com.project.shipticket.util.TestConnection;
 
-public class ShipDetailDAOImplementation {
+public class ShipDetailDAOImplementation implements ShipDetailDAO {
 	Logger logger = Logger.getInstance();
 	Connection com = null;
 
@@ -93,13 +93,14 @@ public class ShipDetailDAOImplementation {
 
 	public void getShip(ShipDetail s) throws Exception {
 		PreparedStatement smt3 = null;
+		ResultSet rs=null;
 		try {
 			com = TestConnection.getConnection();
 
 			String sql3 = "select source_place,destination_place from ship_detail where ship_id=?";
 			smt3 = com.prepareStatement(sql3);
 			smt3.setInt(1, s.getShipId());
-			ResultSet rs = smt3.executeQuery();
+			rs = smt3.executeQuery();
 
 			if (rs.next()) {
 
@@ -112,19 +113,21 @@ public class ShipDetailDAOImplementation {
 			if (smt3 != null) {
 				smt3.close();
 				com.close();
+				rs.close();
 			}
 		}
 	}
 
 	public void distinctShip(String s) throws Exception {
 		PreparedStatement smt4 = null;
+		ResultSet rs4=null;
 		try {
 			com = TestConnection.getConnection();
 
 			String sql4 = "select distinct(" + s + ") as classes from ship_detail";
 			smt4 = com.prepareStatement(sql4);
 
-			ResultSet rs4 = smt4.executeQuery();
+			rs4 = smt4.executeQuery();
 			while (rs4.next()) {
 
 				logger.info(rs4.getString("classes"));
@@ -136,7 +139,9 @@ public class ShipDetailDAOImplementation {
 			if (smt4 != null) {
 				smt4.close();
 				com.close();
+				rs4.close();
 			}
 		}
 	}
+
 }

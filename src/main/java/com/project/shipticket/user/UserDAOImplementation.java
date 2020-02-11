@@ -117,10 +117,11 @@ public class UserDAOImplementation implements UserDAO {
 		Connection com = TestConnection.getConnection();
 		Statement stmt6 = null;
 		boolean result = false;
+		ResultSet rs=null;
 		try {
 			stmt6 = com.createStatement();
 			if (stmt6.executeUpdate("select email from user_detail  where email='" + email + "'") != 0) {
-				ResultSet rs = stmt6.executeQuery("select pass from user_detail  where email='" + email + "'");
+				rs = stmt6.executeQuery("select pass from user_detail  where email='" + email + "'");
 				rs.next();
 
 				if (password.equals(rs.getString("pass"))) {
@@ -138,6 +139,7 @@ public class UserDAOImplementation implements UserDAO {
 				if (stmt6 != null) {
 					stmt6.close();
 					com.close();
+					rs.close();
 				}
 			} catch (Exception ex) {
 				logger.error("Exception:" + ex);

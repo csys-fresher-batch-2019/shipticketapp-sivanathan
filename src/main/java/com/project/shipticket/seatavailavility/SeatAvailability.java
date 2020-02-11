@@ -1,5 +1,8 @@
 package com.project.shipticket.seatavailavility;
 
+import lombok.Data;
+
+@Data
 public class SeatAvailability {
 
 	public int getShipId() {
@@ -74,11 +77,16 @@ public class SeatAvailability {
 	private String ticketStatus;
 	private int cost;
 	private int shipNo;
-	/*
-	 * public String toString() { return "SeatAvailability [shipId=" + shipId +
-	 * ", journeyId=" + journeyId + ", availabilitySeats=" + availabilitySeats +
-	 * ", userId=" + userId + ", BookingSeats=" + BookingSeats + ", ticketStatus=" +
-	 * ticketStatus + ", cost=" + cost + ", shipNo=" + shipNo + "]"; }
-	 */
-
+	@Override
+	public String toString() {
+		return "SeatAvailability [shipId=" + shipId + ", journeyId=" + journeyId + ", availabilitySeats="
+				+ availabilitySeats + ", userId=" + userId + ", BookingSeats=" + BookingSeats + ", ticketStatus="
+				+ ticketStatus + ", cost=" + cost + ", shipNo=" + shipNo + ", getShipId()=" + getShipId()
+				+ ", getJourneyId()=" + getJourneyId() + ", getAvailabilitySeats()=" + getAvailabilitySeats()
+				+ ", getUserId()=" + getUserId() + ", getBookingSeats()=" + getBookingSeats() + ", getTicketStatus()="
+				+ getTicketStatus() + ", getCost()=" + getCost() + ", getShipNo()=" + getShipNo() + ", hashCode()="
+				+ hashCode() + ", getClass()=" + getClass() + ", toString()=" + super.toString() + "]";
+	}
+	
+	
 }

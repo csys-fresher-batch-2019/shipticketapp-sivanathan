@@ -85,6 +85,7 @@ public class JourneyDAOImplementation implements JourneyDAO {
 
 	public void getJourney(LocalDate date12, LocalDate date22) throws Exception {
 		PreparedStatement smt4 = null;
+		ResultSet rs4 =null;
 		try {
 			com = TestConnection.getConnection();
 
@@ -96,7 +97,7 @@ public class JourneyDAOImplementation implements JourneyDAO {
 			smt4.setDate(2, date2);
 			logger.debug(sql4);
 
-			ResultSet rs4 = smt4.executeQuery();
+			rs4 = smt4.executeQuery();
 			while (rs4.next()) {
 
 				logger.debug("journeyid:" + rs4.getString("journey_id") + "\n");
@@ -110,6 +111,7 @@ public class JourneyDAOImplementation implements JourneyDAO {
 			if (smt4 != null) {
 				smt4.close();
 				com.close();
+				rs4.close();
 			}
 		}
 	}

@@ -61,6 +61,15 @@ public class BookingDAOImplementation implements BookingDAO {
 		{
 			logger.error("exception"+e);
 		}
+		finally
+		{
+			if(smt2!=null)
+			{
+				smt2.close();
+				com.close();
+			}
+		}
+
 	}
 
 	public void deleteBooking(Booking a) throws Exception {
@@ -93,11 +102,12 @@ public class BookingDAOImplementation implements BookingDAO {
 
 		public void count(String b) throws Exception {
 			PreparedStatement smt4 =null;
+			ResultSet rs4=null;
 			try{com = TestConnection.getConnection();
 		String sql4 = "select " + b + "(*) from booking_detail";
 		smt4 = com.prepareStatement(sql4);
 
-		ResultSet rs4 = smt4.executeQuery();
+		rs4 = smt4.executeQuery();
 		if (rs4.next()) {
 
 			logger.debug("count:" + rs4.getInt("count(*)"));
@@ -112,6 +122,7 @@ public class BookingDAOImplementation implements BookingDAO {
 				{
 					smt4.close();
 					com.close();
+					rs4.close();
 				}
 			}
 

@@ -116,23 +116,24 @@ public class TestAddSeat
 
 		logger.input("ENTER THE PROCEDURE CALL DETAILS:\n");
 		logger.input("Enter the userid:\n");
-		int aa = scn6.nextInt();
+		int id = scn6.nextInt();
 		logger.input("Enter the ship no:\n");
-		int bb = scn6.nextInt();
+		int no = scn6.nextInt();
 		logger.input("Enter the journey id:\n");
-		int cc = scn6.nextInt();
+		int jno = scn6.nextInt();
 		logger.input("Enter the booking seats:\n");
-		int dd = scn6.nextInt();
+		int seat = scn6.nextInt();
 		logger.input("Enter the ticket status:\n");
-		String ee = scn6.next();
+		String status = scn6.next();
 		logger.input("Enter the cost:\n");
-		int ff = scn6.nextInt();
-		u5.setUserId(aa);
-		u5.setShipNo(bb);
-		u5.setJourneyId(cc);
-		u5.setBookingSeats(dd);
-		u5.setTicketStatus(ee);
-		u5.setCost(ff);
+		int cost = scn6.nextInt();
+		
+		u5.setUserId(id);
+		u5.setShipNo(no);
+		u5.setJourneyId(jno);
+		u5.setBookingSeats(seat);
+		u5.setTicketStatus(status);
+		u5.setCost(cost);
 		m5.procedure(u5);
 		scn6.close();
 
