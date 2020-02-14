@@ -55,7 +55,7 @@ public class SendSmsIml {
         }
         catch (MessagingException e) 
         {
-        	throw new RuntimeException(e);
+        	logger.error(e);
         }    
 	}  
 }

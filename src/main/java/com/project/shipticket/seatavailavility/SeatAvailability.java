@@ -69,7 +69,25 @@ public class SeatAvailability {
 		this.shipNo = shipNo;
 	}
 
-	private int shipId;
+	public int getjourneyNo() {
+		return journeyNo;
+	}
+
+	public void setjourneyNo(int journeyNo) {
+		this.journeyNo = journeyNo;
+	}
+
+	public int getuserNo() {
+		return userNo;
+	}
+
+	public void setuserNo(int userNo) {
+		this.userNo = userNo;
+	}
+
+
+
+private int shipId;
 	private int journeyId;
 	private int availabilitySeats;
 	private int userId;
@@ -77,16 +95,22 @@ public class SeatAvailability {
 	private String ticketStatus;
 	private int cost;
 	private int shipNo;
+	private int journeyNo;
+	private int userNo;
 	@Override
 	public String toString() {
 		return "SeatAvailability [shipId=" + shipId + ", journeyId=" + journeyId + ", availabilitySeats="
 				+ availabilitySeats + ", userId=" + userId + ", BookingSeats=" + BookingSeats + ", ticketStatus="
-				+ ticketStatus + ", cost=" + cost + ", shipNo=" + shipNo + ", getShipId()=" + getShipId()
-				+ ", getJourneyId()=" + getJourneyId() + ", getAvailabilitySeats()=" + getAvailabilitySeats()
-				+ ", getUserId()=" + getUserId() + ", getBookingSeats()=" + getBookingSeats() + ", getTicketStatus()="
-				+ getTicketStatus() + ", getCost()=" + getCost() + ", getShipNo()=" + getShipNo() + ", hashCode()="
-				+ hashCode() + ", getClass()=" + getClass() + ", toString()=" + super.toString() + "]";
+				+ ticketStatus + ", cost=" + cost + ", shipNo=" + shipNo + ", journeyNo=" + journeyNo + ", userNo="
+				+ userNo + ", getShipId()=" + getShipId() + ", getJourneyId()=" + getJourneyId()
+				+ ", getAvailabilitySeats()=" + getAvailabilitySeats() + ", getUserId()=" + getUserId()
+				+ ", getBookingSeats()=" + getBookingSeats() + ", getTicketStatus()=" + getTicketStatus()
+				+ ", getCost()=" + getCost() + ", getShipNo()=" + getShipNo() + ", getjourneyNo()=" + getjourneyNo()
+				+ ", getuserNo()=" + getuserNo() + ", hashCode()=" + hashCode() + ", getClass()=" + getClass()
+				+ ", toString()=" + super.toString() + "]";
 	}
+	
+	
 	
 	
 }

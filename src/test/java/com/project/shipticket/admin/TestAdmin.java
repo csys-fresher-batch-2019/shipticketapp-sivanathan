@@ -9,6 +9,7 @@ public class TestAdmin {
 
 	public static void main(String[] args) throws Exception {
 		
+		@SuppressWarnings("resource")
 		Scanner scn = new Scanner(System.in);
 	logger.input("Enter Admin_Id:");
 	int AdminId = scn.nextInt();

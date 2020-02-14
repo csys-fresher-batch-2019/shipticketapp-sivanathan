@@ -11,7 +11,7 @@ public class TestAddSeat
 
 	public static void main(String[] args) throws Exception {
 		Scanner sa = new Scanner(System.in);
-		logger.input("select any one of the following(insert,update,delete,cost,procedure)");
+		logger.input("select any one of the following(insert,update,delete,cost,procedure,availableseat)");
 		String value = sa.next();
 		if (value.equalsIgnoreCase("insert")) {
 			method1();
@@ -23,6 +23,8 @@ public class TestAddSeat
 			method4();
 		} else if (value.equalsIgnoreCase("procedure")) {
 			method5();
+		}else if (value.equalsIgnoreCase("availableseat")) {
+			method6();
 		}
 
 		sa.close();
@@ -128,14 +130,44 @@ public class TestAddSeat
 		logger.input("Enter the cost:\n");
 		int cost = scn6.nextInt();
 		
-		u5.setUserId(id);
+		u5.setuserNo(id);
 		u5.setShipNo(no);
-		u5.setJourneyId(jno);
+		u5.setjourneyNo(jno);
 		u5.setBookingSeats(seat);
 		u5.setTicketStatus(status);
 		u5.setCost(cost);
 		m5.procedure(u5);
 		scn6.close();
+
+	}
+	public static void method6() throws Exception
+	{
+		SeatDAOImplementation m6 = new SeatDAOImplementation();
+		SeatAvailability u6 = new SeatAvailability();
+		Scanner scn7 = new Scanner(System.in);
+
+		//logger.input("ENTER THE PROCEDURE CALL DETAILS:\n");
+		//logger.input("Enter the userid:\n");
+		//int id = scn6.nextInt();
+		logger.input("Enter the ship id:\n");
+		int no = scn7.nextInt();
+		logger.input("Enter the journey id:\n");
+		int jno = scn7.nextInt();
+		//logger.input("Enter the booking seats:\n");
+		//int seat = scn6.nextInt();
+		//logger.input("Enter the ticket status:\n");
+		//String status = scn6.next();
+		//logger.input("Enter the cost:\n");
+		//int cost = scn6.nextInt();
+		
+		//u5.setUserId(id);
+		u6.setShipId(no);
+		u6.setJourneyId(jno);
+		//u5.setBookingSeats(seat);
+		//u5.setTicketStatus(status);
+		//u5.setCost(cost);
+		m6.seat(u6);
+		scn7.close();
 
 	}
 

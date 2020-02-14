@@ -119,7 +119,7 @@ public class TestAddUser {
 
 	}
 
-	public static void userLogin() throws Exception {
+	/*public static void userLogin() throws Exception {
 		UserDAOImplementation m4 = new UserDAOImplementation();
 		User u4 = new User();
 		Scanner sc = new Scanner(System.in);
@@ -156,5 +156,46 @@ public class TestAddUser {
 				logger.debug("invalid selection");
 			}
 		}
+	}*/
+	
+
+	public static void userLogin() throws Exception {
+		UserDAOImplementation m4 = new UserDAOImplementation();
+		User u4 = new User();
+		Scanner sc = new Scanner(System.in);
+
+		logger.input("Enter userid :");
+		int user_id = sc.nextInt();
+		logger.input("Enter Password:");
+		String password = sc.next();
+
+		if (m4.User(user_id, password)) {
+			logger.input("----LOGIN SUCESSFULL----");
+		} else {
+			logger.input("----LOGIN FAILED----");
+			logger.input("DO YOU WANT TO RESET PASSWORD(Y/N)");
+
+			String reset = sc.next();
+			if (reset.equalsIgnoreCase("Y")) {
+
+				logger.input("Enter the userid:\n");
+				int id = sc.nextInt();
+
+				logger.input("Enter the new password:\n");
+				String password1 = sc.next();
+
+				u4.setPassword(password1);
+				u4.setUserId(id);
+
+				sc.close();
+
+				m4.resetUser(u4);
+			} else if (reset.equalsIgnoreCase("N")) {
+				logger.debug("TRY AGAIN  ");
+			} else {
+				logger.debug("invalid selection");
+			}
+		}
 	}
+
 }
