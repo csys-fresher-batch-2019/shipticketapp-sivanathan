@@ -1,9 +1,6 @@
 package com.project.shipticket.util;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-
-import org.jdbi.v3.core.Jdbi;
 
 import com.project.shipticket.admin.AdminDAO;
 import com.project.shipticket.admin.AdminDAOImplementation;
@@ -34,8 +31,14 @@ public class ServiceShipTicket {
 	private UserDAO user = new UserDAOImplementation();
 	//static Jdbi jdbi=TestConnection.getJdbi();
 	//static UserDAO user=jdbi.onDemand(UserDAO.class);
-	public int Totalcost(int a,int b)throws Exception{
-		return seat.Totalcost(a,b);	
+	public int Totalcost(int a,int b)throws ServiceException{
+		try {
+			return seat.Totalcost(a,b);
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
+		}	
 	}
 	
 
@@ -45,27 +48,27 @@ public class ServiceShipTicket {
 			validSearch(adminId, pass);
 			adminLogin = admin.AdminLogin(adminId, pass);
 		} catch (ValidatorException e) {
-			throw new ServiceException("validator exception is achieved " + e);
+			throw new ServiceException(ErrorMessages.INVALID_VALIDATE);
 		} catch (DBException e) {
 			e.printStackTrace();
-			throw new ServiceException("DB exception is achieved " + e);
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
 		}
 
 		return adminLogin;
 
 	}
 
-	public boolean User(int userId, String password) throws Exception {
+	public boolean User(int userId, String password) throws ServiceException {
 		boolean userLogin = false;
 		try {
 			validSearch1(userId, password);
 			userLogin = user.User(userId, password);
 		} catch (ValidatorException e) {
 			e.printStackTrace();
-			throw new ServiceException("validator exception is achieved " + e);
+			throw new ServiceException(ErrorMessages.INVALID_VALIDATE );
 		} catch (DBException e) {
 			e.printStackTrace();
-			throw new ServiceException("DB exception is achieved " + e);
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
 		}
 
 		return userLogin;
@@ -75,68 +78,146 @@ public class ServiceShipTicket {
 	public int book(Booking b) throws Exception{
 		return book.book(b);
 	}
-	public void add(SeatAvailability a) throws Exception {
-		seat.add(a);
+	public void add(SeatAvailability a) throws ServiceException {
+		try {
+			seat.add(a);
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
+		}
 	}
 
-	public void update(SeatAvailability a) throws Exception {
-		seat.update(a);
+	public void update(SeatAvailability a) throws ServiceException {
+		try {
+			seat.update(a);
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
+		}
 	}
 
-	public void delete(SeatAvailability a) throws Exception {
-		seat.delete(a);
+	public void delete(SeatAvailability a) throws ServiceException {
+		try {
+			seat.delete(a);
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
+		}
 	}
 
-	public void procedure(SeatAvailability b) throws Exception {
-		seat.procedure(b);
+	public void procedure(SeatAvailability b) throws ServiceException {
+		try {
+			seat.procedure(b);
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
+		}
 	}
 
 	public int costOfBooking(String b) throws Exception {
 		 return seat.costOfBooking(b);
 	}
 
-	public void addBooking(Booking a) throws Exception {
-		book.addBooking(a);
+	public void addBooking(Booking a) throws ServiceException {
+		try {
+			book.addBooking(a);
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
+		}
 	}
 
-	public void updateBooking(Booking a) throws Exception {
-		book.updateBooking(a);
+	public void updateBooking(Booking a) throws ServiceException {
+		try {
+			book.updateBooking(a);
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
+		}
 	}
 
-	public void deleteBooking(Booking a) throws Exception {
-		book.deleteBooking(a);
+	public void deleteBooking(Booking a) throws ServiceException {
+		try {
+			book.deleteBooking(a);
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
+		}
 	}
 
 	public int count() throws Exception {
 		return book.count();
 	}
 
-	public void addJourney(Journey a) throws Exception {
-		journey.addJourney(a);
+	public void addJourney(Journey a) throws ServiceException {
+		try {
+			journey.addJourney(a);
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
+		}
 	}
 
-	public void updateJourney(Journey a) throws Exception {
-		journey.updateJourney(a);
+	public void updateJourney(Journey a) throws ServiceException {
+		try {
+			journey.updateJourney(a);
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
+		}
 	}
 
-	public void deleteJourney(Journey a) throws Exception {
-		journey.deleteJourney(a);
+	public void deleteJourney(Journey a) throws ServiceException {
+		try {
+			journey.deleteJourney(a);
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
+		}
 	}
 
 	public ArrayList<Journey> getJourney(int a) throws Exception {
 		 return journey.getJourney( a);
 	}
 
-	public void addShip(ShipDetail s) throws Exception {
-		ship.addShip(s);
+	public void addShip(ShipDetail s) throws ServiceException {
+		try {
+			ship.addShip(s);
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
+		}
 	}
 
-	public void updateShip(ShipDetail s) throws Exception {
-		ship.updateShip(s);
+	public void updateShip(ShipDetail s) throws ServiceException {
+		try {
+			ship.updateShip(s);
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
+		}
 	}
 
-	public void deleteShip(ShipDetail s) throws Exception {
-		ship.deleteShip(s);
+	public void deleteShip(ShipDetail s) throws ServiceException {
+		try {
+			ship.deleteShip(s);
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
+		}
 	}
 
 	public ArrayList<ShipDetail> getShip(ShipDetail s) throws Exception {
@@ -147,24 +228,54 @@ public class ServiceShipTicket {
 		 return ship.Ship();
 	}
 
-	public void distinctShip(String s) throws Exception {
-		ship.distinctShip(s);
+	public void distinctShip(String s) throws ServiceException {
+		try {
+			ship.distinctShip(s);
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
+		}
 	}
 
-	public void addUser(User a) throws Exception {
-		user.addUser(a);
+	public void addUser(User a) throws ServiceException {
+		try {
+			user.addUser(a);
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
+		}
 	}
 
-	public void updateUser(User a) throws Exception {
-		user.updateUser(a);
+	public void updateUser(User a) throws ServiceException {
+		try {
+			user.updateUser(a);
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
+		}
 	}
 
-	public void deleteUser(User a) throws Exception {
-		user.deleteUser(a);
+	public void deleteUser(User a) throws ServiceException {
+		try {
+			user.deleteUser(a);
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
+		}
 	}
 
-	public void resetUser(User a) throws Exception {
-		user.resetUser(a);
+	public void resetUser(User a) throws ServiceException {
+		try {
+			user.resetUser(a);
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ServiceException(ErrorMessages.INVALID_DB_EXCEPTION);
+		}
 	}
 
 	public int seat(SeatAvailability b) throws Exception {

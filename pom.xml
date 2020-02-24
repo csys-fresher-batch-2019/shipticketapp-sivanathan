@@ -24,6 +24,7 @@
 			<artifactId>sendgrid-java</artifactId>
 			<version>4.4.1</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.jdbi</groupId>
 			<artifactId>jdbi3-sqlobject</artifactId>
@@ -34,6 +35,7 @@
 			<artifactId>jdbi3-core</artifactId>
 			<version>3.12.2</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -52,7 +54,11 @@
     <version>1.18.12</version>
     <scope>provided</scope>
 </dependency>
-		
+<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>		
 
 	</dependencies>
 </project>

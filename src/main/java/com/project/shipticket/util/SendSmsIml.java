@@ -55,6 +55,8 @@ public class SendSmsIml {
         }
         catch (MessagingException e) 
         {
+        	e.printStackTrace();
+        	e.getMessage();
         	logger.error(e);
         }    
 	}  

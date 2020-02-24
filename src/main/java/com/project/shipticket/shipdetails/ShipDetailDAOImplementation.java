@@ -14,7 +14,7 @@ public class ShipDetailDAOImplementation implements ShipDetailDAO {
 	Logger logger = Logger.getInstance();
 	// Connection com = null;
 
-	public void addShip(ShipDetail s) throws Exception {
+	public void addShip(ShipDetail s)  {
 		try (Connection com = TestConnection.getConnection();) {
 
 			String sql = "insert into ship_detail(ship_id,ship_name,source_place,destination_place,total_no_of_seats,classes,amount) values(?,?,?,?,?,?,?)";
@@ -34,15 +34,17 @@ public class ShipDetailDAOImplementation implements ShipDetailDAO {
 				logger.info(row);
 
 			} catch (Exception e) {
+				e.printStackTrace();
 				logger.error(ErrorMessages.INVALID_PREPARESTATEMENT + e);
 			}
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error(ErrorMessages.CONNECTION_FAILURE + e);
 		}
 	}
 
-	public void updateShip(ShipDetail s) throws Exception {
+	public void updateShip(ShipDetail s) {
 
 		try (Connection com = TestConnection.getConnection();) {
 
@@ -57,16 +59,18 @@ public class ShipDetailDAOImplementation implements ShipDetailDAO {
 				int row1 = smt1.executeUpdate();
 				logger.info(row1);
 			} catch (Exception e) {
+				e.printStackTrace();
 				logger.error(ErrorMessages.INVALID_PREPARESTATEMENT + e);
 			}
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error(ErrorMessages.CONNECTION_FAILURE + e);
 		}
 
 	}
 
-	public void deleteShip(ShipDetail s) throws Exception {
+	public void deleteShip(ShipDetail s) {
 
 		try (Connection com = TestConnection.getConnection();) {
 
@@ -81,10 +85,12 @@ public class ShipDetailDAOImplementation implements ShipDetailDAO {
 			}
 
 			catch (Exception e) {
+				e.printStackTrace();
 				logger.error(ErrorMessages.INVALID_PREPARESTATEMENT + e);
 			}
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error(ErrorMessages.CONNECTION_FAILURE + e);
 		}
 
@@ -120,16 +126,18 @@ public class ShipDetailDAOImplementation implements ShipDetailDAO {
 				}
 
 			} catch (Exception e) {
+				e.printStackTrace();
 				logger.error(ErrorMessages.INVALID_PREPARESTATEMENT + e);
 			}
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error(ErrorMessages.CONNECTION_FAILURE + e);
 		}
 		return list;
 	}
 
-	public void distinctShip(String s) throws Exception {
+	public void distinctShip(String s)  {
 		// PreparedStatement smt4 = null;
 		ResultSet rs4 = null;
 		try (Connection com = TestConnection.getConnection();) {
@@ -142,10 +150,12 @@ public class ShipDetailDAOImplementation implements ShipDetailDAO {
 				}
 
 			} catch (Exception e) {
+				e.printStackTrace();
 				logger.error(ErrorMessages.INVALID_PREPARESTATEMENT + e);
 			}
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error(ErrorMessages.CONNECTION_FAILURE + e);
 		}
 
@@ -179,10 +189,12 @@ public ArrayList<ShipDetail> Ship() {
 			}
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error(ErrorMessages.INVALID_CREATESTATEMENT + e);
 		}
 
 	} catch (Exception e) {
+		e.printStackTrace();
 		logger.error(ErrorMessages.CONNECTION_FAILURE + e);
 	}
 	return list;

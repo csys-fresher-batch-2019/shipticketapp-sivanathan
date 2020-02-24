@@ -1,6 +1,6 @@
 package com.project.shipticket.user;
 
-import org.jdbi.v3.sqlobject.statement.SqlUpdate;
+import com.project.shipticket.util.DBException;
 
 public interface UserDAO {
 /*
@@ -19,13 +19,13 @@ public interface UserDAO {
 	
 	*/
 	
-	public boolean User(int userId, String password) throws Exception;
+	public boolean User(int userId, String password) throws DBException;
 
-	public void addUser(User a) throws Exception;//user
+	public void addUser(User a) throws DBException;//user
 
-	public void updateUser(User a) throws Exception;//user
+	public void updateUser(User a) throws DBException;//user
 
-	public void deleteUser(User a) throws Exception;//admin
+	public void deleteUser(User a) throws DBException;//admin
 
-	public void resetUser(User a) throws Exception;//user
+	public void resetUser(User a) throws DBException;//user
 }

@@ -31,12 +31,14 @@ return true;
 
 } 
 		catch (Exception e) {
-			logger.error(ErrorMessages.INVALID_PREPARESTATEMENT + e);
+			e.printStackTrace();
+			logger.error(ErrorMessages.INVALID_PREPARESTATEMENT);
 			//logger.error("Exception"+e);
 		}
 		}catch(Exception e)
 			{
-			logger.error(ErrorMessages.CONNECTION_FAILURE + e);
+			e.printStackTrace();
+			logger.error(ErrorMessages.CONNECTION_FAILURE);
 			}
 		return false;
 }

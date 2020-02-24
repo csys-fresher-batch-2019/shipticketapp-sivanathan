@@ -3,12 +3,9 @@ package com.project.shipticket.user;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-import org.jdbi.v3.core.Jdbi;
-
 import com.project.shipticket.user.User;
 import com.project.shipticket.user.UserDAOImplementation;
 import com.project.shipticket.util.Logger;
-import com.project.shipticket.util.TestConnection;
 
 public class TestAddUser {
 

@@ -3,10 +3,7 @@ package com.project.shipticket.journey;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.LocalDate;
 import java.util.ArrayList;
-
-import com.project.shipticket.shipdetails.ShipDetail;
 import com.project.shipticket.util.ErrorMessages;
 import com.project.shipticket.util.Logger;
 import com.project.shipticket.util.TestConnection;
@@ -15,7 +12,7 @@ public class JourneyDAOImplementation implements JourneyDAO {
 	Connection com = null;
 	Logger logger = Logger.getInstance();
 
-	public void addJourney(Journey a) throws Exception {
+	public void addJourney(Journey a)  {
 		try(Connection com = TestConnection.getConnection();) {
 			
 			String sql1 = "insert into journey_detail(journey_id,source_date,destination_date,ship_id)values(?,?,?,?)";
@@ -30,13 +27,15 @@ public class JourneyDAOImplementation implements JourneyDAO {
 			int row1 = smt1.executeUpdate();
 			logger.debug(row1);
 		} catch (Exception e) {
-			logger.error(ErrorMessages.INVALID_PREPARESTATEMENT+ e);
+			e.printStackTrace();
+			logger.error(ErrorMessages.INVALID_PREPARESTATEMENT);
 		}} catch(Exception e) {
-			logger.error(ErrorMessages.CONNECTION_FAILURE+ e);
+			e.printStackTrace();
+			logger.error(ErrorMessages.CONNECTION_FAILURE);
 		}
 	}
 
-	public void updateJourney(Journey a) throws Exception {
+	public void updateJourney(Journey a) {
 		try(Connection com = TestConnection.getConnection();) {
 			
 			String sql2 = "update journey_detail set destination_date=? where ship_id=?";
@@ -50,12 +49,14 @@ public class JourneyDAOImplementation implements JourneyDAO {
 			int row2 = smt2.executeUpdate();
 			logger.debug(row2);
 		} catch (Exception e) {
-			logger.error(ErrorMessages.INVALID_PREPARESTATEMENT+ e);
+			e.printStackTrace();
+			logger.error(ErrorMessages.INVALID_PREPARESTATEMENT);
 		}} catch(Exception e) {
-			logger.error(ErrorMessages.CONNECTION_FAILURE+ e);
+			e.printStackTrace();
+			logger.error(ErrorMessages.CONNECTION_FAILURE);
 		}	}
 
-	public void deleteJourney(Journey a) throws Exception {
+	public void deleteJourney(Journey a) {
 		try(Connection com = TestConnection.getConnection();) {
 			
 
@@ -69,13 +70,15 @@ public class JourneyDAOImplementation implements JourneyDAO {
 	
 			}
 			catch (Exception e) {
-				logger.error(ErrorMessages.INVALID_PREPARESTATEMENT+ e);
+				e.printStackTrace();
+				logger.error(ErrorMessages.INVALID_PREPARESTATEMENT);
 			}} catch(Exception e) {
-				logger.error(ErrorMessages.CONNECTION_FAILURE+ e);
+				e.printStackTrace();
+				logger.error(ErrorMessages.CONNECTION_FAILURE);
 			}
 	}
 
-	public ArrayList<Journey> getJourney(int a) throws Exception {
+	public ArrayList<Journey> getJourney(int a) {
 		ResultSet rs4 =null;
 		ArrayList<Journey> list = new ArrayList<Journey>();
 		try(Connection com = TestConnection.getConnection();) {
@@ -99,10 +102,14 @@ public class JourneyDAOImplementation implements JourneyDAO {
 			}
 			
 					} catch (Exception e) {
-			logger.error(ErrorMessages.INVALID_PREPARESTATEMENT+ e);
+						e.printStackTrace();
+			logger.error(ErrorMessages.INVALID_PREPARESTATEMENT);
 		}} catch(Exception e) {
-			logger.error(ErrorMessages.CONNECTION_FAILURE+ e);
+			e.printStackTrace();
+			logger.error(ErrorMessages.CONNECTION_FAILURE);
 		}
 		return list;
 
-}}
+}
+
+}

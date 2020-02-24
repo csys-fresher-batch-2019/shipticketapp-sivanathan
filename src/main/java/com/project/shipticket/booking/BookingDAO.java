@@ -1,14 +1,17 @@
 package com.project.shipticket.booking;
 
+import com.project.shipticket.util.DBException;
+
 public interface BookingDAO {
 
-	public void addBooking(Booking b) throws Exception;//user work
+	public void addBooking(Booking b) throws DBException;//user work
 
-	public void updateBooking(Booking b) throws Exception;//admin work
+	public void updateBooking(Booking b) throws DBException;//admin work
 
-	public void deleteBooking(Booking b) throws Exception;//user work
+	public void deleteBooking(Booking b) throws DBException;//user work
 	
-	public int book(Booking b) throws Exception;
-	public int count() throws Exception;//admin work
+	public int book(Booking b) throws DBException;
+	
+	public int count() throws DBException;//admin work
 
 }

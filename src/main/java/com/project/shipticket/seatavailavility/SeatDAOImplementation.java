@@ -14,7 +14,7 @@ import com.project.shipticket.util.TestConnection;
 public class SeatDAOImplementation implements SeatDAO {
 	Logger logger = Logger.getInstance();
 
-	public void add(SeatAvailability a) throws Exception {
+	public void add(SeatAvailability a) {
 
 		// Connection com = null;
 		// PreparedStatement smt1 = null;
@@ -40,7 +40,7 @@ public class SeatDAOImplementation implements SeatDAO {
 		}
 	}
 
-	public void update(SeatAvailability a) throws Exception {
+	public void update(SeatAvailability a) {
 
 		// Connection com = null;
 		// PreparedStatement smt2 = null;
@@ -63,7 +63,7 @@ public class SeatDAOImplementation implements SeatDAO {
 		}
 	}
 
-	public void delete(SeatAvailability a) throws Exception {
+	public void delete(SeatAvailability a) {
 		// PreparedStatement smt3 = null;
 
 		// Connection com = null;
@@ -86,7 +86,7 @@ public class SeatDAOImplementation implements SeatDAO {
 		}
 	}
 
-	public void procedure(SeatAvailability b) throws Exception {
+	public void procedure(SeatAvailability b) {
 		
 		try (Connection com = TestConnection.getConnection();) {
 			String sql4 = "call TICKET_BOOKING(?,?,?,?,?,?)";
@@ -148,7 +148,7 @@ public class SeatDAOImplementation implements SeatDAO {
 		}
 	}
 
-	public int costOfBooking(String b) throws Exception {
+	public int costOfBooking(String b) {
 		// PreparedStatement smt4 = null;
 int cost=0;
 		// Connection com = null;
@@ -174,7 +174,7 @@ return cost;
 	}
 
 	@Override
-	public int seat(SeatAvailability b) throws Exception {
+	public int seat(SeatAvailability b) {
 		int seats = 0;
 		try (Connection com = TestConnection.getConnection();) {
 			// com = TestConnection.getConnection();
@@ -202,7 +202,7 @@ return cost;
 		return seats;
 
 	}
-	public int Totalcost(int a,int b) throws Exception {
+	public int Totalcost(int a,int b) {
 		// PreparedStatement smt4 = null;
 int cost=0;
 		// Connection com = null;

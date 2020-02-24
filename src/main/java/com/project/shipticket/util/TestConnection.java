@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
-//import java.sql.SQLException;
+
 
 public class TestConnection {
 	public static Connection getConnection() throws Exception {

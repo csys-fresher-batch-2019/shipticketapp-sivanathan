@@ -1,14 +1,15 @@
 package com.project.shipticket.journey;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
+import com.project.shipticket.util.DBException;
+
 public interface JourneyDAO {
-	public void addJourney(Journey a) throws Exception;//user work
+	public void addJourney(Journey a) throws DBException;//user work
 
-	public void updateJourney(Journey a) throws Exception;//admin work
+	public void updateJourney(Journey a) throws DBException;//admin work
 
-	public void deleteJourney(Journey a) throws Exception;//admin work
+	public void deleteJourney(Journey a) throws DBException;//admin work
 
-	public ArrayList<Journey> getJourney(int a) throws Exception;//user work
+	public ArrayList<Journey> getJourney(int a) throws DBException;//user work
 }

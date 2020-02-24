@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
 
-import javax.naming.spi.DirStateFactory.Result;
-
 import com.project.shipticket.util.ErrorMessages;
 import com.project.shipticket.util.Logger;
 import com.project.shipticket.util.TestConnection;
@@ -15,7 +13,7 @@ public class BookingDAOImplementation implements BookingDAO {
 	Connection com = null;
 	Logger logger = Logger.getInstance();
 
-	public void addBooking(Booking a) throws Exception {
+	public void addBooking(Booking a) {
 		// PreparedStatement smt1=null;
 		try (Connection com = TestConnection.getConnection();) {
 
@@ -45,7 +43,7 @@ public class BookingDAOImplementation implements BookingDAO {
 		}
 	}
 
-	public void updateBooking(Booking a) throws Exception {
+	public void updateBooking(Booking a) {
 		// PreparedStatement smt2 =null;
 		try (Connection com = TestConnection.getConnection();) {
 
@@ -66,7 +64,7 @@ public class BookingDAOImplementation implements BookingDAO {
 		}
 	}
 
-	public void deleteBooking(Booking a) throws Exception {
+	public void deleteBooking(Booking a) {
 		try (Connection com = TestConnection.getConnection();) {
 
 			String sql3 = "delete from booking_detail  where user_id=? and journey_id=?";
@@ -85,18 +83,18 @@ public class BookingDAOImplementation implements BookingDAO {
 		}
 	}
 
-	public int count() throws Exception{
-	//public void count(String b) throws Exception {
+	public int count() {
+		// public void count(String b) throws Exception {
 		ResultSet rs4 = null;
-		int value=0;
+		int value = 0;
 		try (Connection com = TestConnection.getConnection();) {
 			String sql4 = "select count(*) from booking_detail";
-			//String sql4 = "select " + b + "(*) from booking_detail";
+			// String sql4 = "select " + b + "(*) from booking_detail";
 			try (PreparedStatement smt4 = com.prepareStatement(sql4);) {
 
 				rs4 = smt4.executeQuery();
 				if (rs4.next()) {
-					value=rs4.getInt("count(*)");
+					value = rs4.getInt("count(*)");
 					logger.debug("count:" + value);
 				}
 			} catch (Exception e) {
@@ -108,7 +106,7 @@ public class BookingDAOImplementation implements BookingDAO {
 		return value;
 	}
 
-	public int book(Booking b) throws Exception {
+	public int book(Booking b) {
 
 		int res = 0;
 		try (Connection com = TestConnection.getConnection();) {
@@ -126,14 +124,21 @@ public class BookingDAOImplementation implements BookingDAO {
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
-					logger.error(ErrorMessages.INVALID_PREPARESTATEMENT + e);
+					logger.error("result set " + e);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				logger.error(ErrorMessages.CONNECTION_FAILURE + e);
-			}
-			return res;
+				logger.error(ErrorMessages.INVALID_PREPARESTATEMENT);
+			
+			}}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			logger.error(ErrorMessages.INVALID_CONNECTIONSTATEMENT);
+			
 		}
+			return res;
+		
 	}
 
 }
