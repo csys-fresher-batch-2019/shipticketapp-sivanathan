@@ -20,7 +20,7 @@ public class TestConnection {
 
 		return con;
 	}//ctrl+shift+o to add all import
-	public static Jdbi getJdbi()
+	/*public static Jdbi getJdbi()
 	{
 		Jdbi jdbi=null;
 		Connection connection;
@@ -33,5 +33,5 @@ public class TestConnection {
 		}
 		
 		return jdbi;
-	}
+	}*/
 }

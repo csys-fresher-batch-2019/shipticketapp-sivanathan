@@ -84,7 +84,7 @@ public class JourneyDAOImplementation implements JourneyDAO {
 		try(Connection com = TestConnection.getConnection();) {
 			
 			String sql4 = "select * from journey_detail where ship_id =?";
-			//String sql4 = "select * from journey_detail where destination_date between ? and ?";
+
 			try(PreparedStatement smt4  = com.prepareStatement(sql4);)
 			{
 				smt4.setInt(1,a);
