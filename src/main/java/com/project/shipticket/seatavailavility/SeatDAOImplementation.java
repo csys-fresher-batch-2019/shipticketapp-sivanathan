@@ -109,17 +109,20 @@ public class SeatDAOImplementation implements SeatDAO {
 					// smt4 = com.prepareStatement(sql);
 					smt4.setInt(1, b.getuserNo());
 					ResultSet value1 = smt4.executeQuery();
-					logger.debug(sql4);
+					logger.debug(smt4);
 					if (value1.next()) {
 						logger.debug("status:" + value1.getString("ticket_status"));
 						logger.debug("total:" + value1.getInt("cost"));
 					
 
-					String sqlselect = "select email from user_detail where user_id in (select user_id from booking_detail where ticket_status='ordered')";
-					try (Statement stm = com.createStatement();) {
-						ResultSet value2 = stm.executeQuery(sqlselect);
-						logger.debug(value2);
+					String sqlselect = "select email from user_detail where user_id in (select user_id from booking_detail where ticket_status='ordered' and user_id=?)";
+					try (PreparedStatement stm = com.prepareStatement(sqlselect);) {
+						stm.setInt(1, b.getuserNo());
+						ResultSet value2 = stm.executeQuery();
+						//logger.debug(value2);
+						
 						String email = "";
+						//System.out.println("!!");
 						if (value2.next()) {
 							email = value2.getString("email");
 							logger.debug("emailID:" + email);
@@ -132,7 +135,7 @@ public class SeatDAOImplementation implements SeatDAO {
 						}
 					} catch (Exception e) {
 						e.printStackTrace();
-						logger.error(ErrorMessages.INVALID_CREATESTATEMENT + e);
+						logger.error(ErrorMessages.INVALID_PREPARESTATEMENT + e);
 					}
 					}} catch (Exception e) {
 						e.printStackTrace();
